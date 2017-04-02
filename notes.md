@@ -20,3 +20,39 @@ definition for each of those
 types. [source](https://wiki.haskell.org/Polymorphism#Ad-hoc_polymorphism)
 
 e.g. **Typeclasses(Show)**
+
+## Change the value of const variable
+
+Type casting is strange :|
+
+``` c
+#include <stdio.h>
+
+int main ()
+{
+  const int val1 = 20;
+  int *p;
+
+  printf( "%d\n", val1 );
+
+  p = (int*)(&val1);
+  *p = 30;
+
+  printf( "%d\n", val1 );
+  return 0;
+}
+```
+
+This works on gcc. In clang, it gets compiled, but the value of **val1**
+stays same.
+
+so
+```
+value of p != value of val1
+```
+but
+
+```
+address of p == address of val1
+```
+¯\_(ツ)_/¯
